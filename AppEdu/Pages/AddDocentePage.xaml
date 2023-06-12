@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppEdu.Pages.AddDocentePage"
+             xmlns:local="clr-namespace:AppEdu.ViewModels"
+             Title="AddDocentePage">
+    <VerticalStackLayout>
+        <Entry Placeholder="Id" Text="{Binding DocenteInfo.Id, Mode=TwoWay}" IsEnabled="False" IsVisible="false"/>
+        <Entry Placeholder="Nombre" Text="{Binding DocenteInfo.Nombre, Mode=TwoWay}"/>
+        <Entry Placeholder="ApellidoPaterno" Text="{Binding DocenteInfo.ApellidoPaterno, Mode=TwoWay}"/>
+        <Entry Placeholder="ApellidoMaterno" Text="{Binding DocenteInfo.ApellidoMaterno, Mode=TwoWay}"/>
+        <Entry Placeholder="Correo" Text="{Binding DocenteInfo.Correo, Mode=TwoWay}"/>
+        <Entry Placeholder="Telefono" Text="{Binding DocenteInfo.Telefono, Mode=TwoWay}"/>
+        <Entry Placeholder="Edad" Text="{Binding DocenteInfo.Edad, Mode=TwoWay}"/>
+        <Entry Placeholder="TipoDocente" Text="{Binding DocenteInfo.TipoDocente, Mode=TwoWay}"/>
+        <Entry Placeholder="IdUsuario" Text="{Binding DocenteInfo.IdUsuario, Mode=TwoWay}"/>
+        <Entry Placeholder="Usuario" Text="{Binding DocenteInfo.Usuario1, Mode=TwoWay}"/>
+        <Entry Placeholder="Contraseña" Text="{Binding DocenteInfo.Contraseña, Mode=TwoWay}"/>
+        <Button x:Name="btnAgregarDocente" Text="Agregar" Command="{Binding GuardarDocenteCommand}" Clicked="btnAgregarDocente_Clicked"/>
+        <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

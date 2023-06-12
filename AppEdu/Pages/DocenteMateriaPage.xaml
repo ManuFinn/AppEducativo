@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppEdu.Pages.DocenteMateriaPage"
+             xmlns:models="clr-namespace:AppEdu.Models"
+             xmlns:local="clr-namespace:AppEdu.ViewModels.DocenteMateriaVM"
+             Title="Asignar docente">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button x:Name="tbiBack" Text="Back" Clicked="tbiBack_Clicked"/>
+            <Button x:Name="btnAddDocenteMateria" Text="Asignar Docente" Clicked="btnAddDocenteMateria_ClickedAsync"/>
+            <RefreshView x:DataType="local:DocenteMateriaPageViewModel"
+                     Command="{Binding LoadDocenteGruposCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+
+                <CollectionView ItemsSource="{Binding docenteMateriaLista}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:DocenteMateria">
+                            <StackLayout  Padding="5">
+                                <Label Text="{Binding NombreDocente}"/>
+                                <Label Text="{Binding asignatura}"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppEdu.Pages.Docente_GrupoPage"
+             xmlns:models="clr-namespace:AppEdu.Models"
+             xmlns:local="clr-namespace:AppEdu.ViewModels.Docente_GrupoVM"
+             Title="Docente_GrupoPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button x:Name="btnAddDocenteGrupo" Text="Asignar Docente" Clicked="btnAddDocenteGrupo_ClickedAsync"/>
+            <RefreshView x:DataType="local:Docente_GrupoPageViewModel"
+                     Command="{Binding LoadDocenteGruposCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+
+                <CollectionView ItemsSource="{Binding docenteGrupoLista}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Docente_Grupo">
+                            <StackLayout  Padding="5">
+                                <Label Text="{Binding idDocente}"/>
+                                <Label Text="{Binding NombreCompleto}"/>
+                                <Label Text="{Binding Grupo}"/>
+                                <StackLayout>
+                                    <Label Text="Periodo "/>
+                                    <Label Text="{Binding periodo}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
