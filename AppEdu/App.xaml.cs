@@ -1,5 +1,6 @@
 ﻿using AppEdu.Models;
 using AppEdu.Pages;
+using AppEdu.Services.DirectorService;
 using AppEdu.Services.Docente_GrupoService;
 using AppEdu.Services.DocenteMateriaService;
 using AppEdu.Services.DocenteService;
@@ -10,6 +11,10 @@ namespace AppEdu;
 
 public partial class App : Application
 {
+
+    public static DirectorInfo directorInfo;
+    public static DirectorService _directorService;
+
 	public static DocenteInfo DocenteInfo;
 	public static DocenteService _docenteService;
 
@@ -24,6 +29,19 @@ public partial class App : Application
 
     public static DocenteMateria DocenteMateria;
     public static DocenteMateriaService _docenteMateriaService;
+
+
+    public static DirectorService DirectorService
+    {
+        get
+        {
+            if(_directorService == null)
+            {
+                _directorService = new DirectorService();
+            }
+            return _directorService;
+        }
+    }
 
     public static DocenteService DocenteService
 	{

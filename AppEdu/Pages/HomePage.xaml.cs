@@ -26,6 +26,6 @@ public partial class HomePage : ContentPage
 
     private async void btnDirector_ClickedAsync(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EditDirectorPage());
+        await Navigation.PushAsync(new DirectorPage());
     }
 }

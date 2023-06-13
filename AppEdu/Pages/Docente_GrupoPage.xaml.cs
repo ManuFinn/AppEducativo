@@ -20,6 +20,6 @@ public partial class Docente_GrupoPage : ContentPage
 
     private async void btnAddDocenteGrupo_ClickedAsync(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddDocente_GrupoPage());
+        await Navigation.PushModalAsync(new AddDocente_GrupoPage());
     }
 }

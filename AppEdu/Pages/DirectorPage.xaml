@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppEdu.Pages.DirectorPage"
+             xmlns:models="clr-namespace:AppEdu.Models"
+             xmlns:local="clr-namespace:AppEdu.ViewModels.DirectorVM"
+             x:DataType="local:DirectorPageViewModel"
+             Title="Datos del director">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" x:Name="btnUpdateDirector" Text="Editar datos"/>
+        <RefreshView Grid.Row="1" x:DataType="local:DirectorPageViewModel"
+                     Command="{Binding LoadDirectorCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+
+            <VerticalStackLayout>
+                <Label Text="{Binding DirectorInfo.nombre}"/>
+                <Label Text="{Binding director.nombre}"/>
+            </VerticalStackLayout>
+        </RefreshView>
+    </Grid>
+</ContentPage>

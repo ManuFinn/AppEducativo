@@ -23,8 +23,4 @@ public partial class DocentePage : ContentPage
         await Navigation.PushModalAsync(new AddDocentePage());
     }
 
-    private async void tbiBack_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PopModalAsync();
-    }
 }

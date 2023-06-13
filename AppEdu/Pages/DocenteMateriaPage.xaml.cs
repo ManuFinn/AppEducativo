@@ -23,7 +23,7 @@ public partial class DocenteMateriaPage : ContentPage
 
     private async void btnAddDocenteMateria_ClickedAsync(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddDocenteMateriaPage());
+        await Navigation.PushModalAsync(new AddDocenteMateriaPage());
     }
 
 }
