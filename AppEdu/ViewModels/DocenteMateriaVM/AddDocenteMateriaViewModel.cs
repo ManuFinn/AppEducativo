@@ -10,39 +10,25 @@ namespace AppEdu.ViewModels.DocenteMateriaVM
 {
     public partial class AddDocenteMateriaViewModel : BaseDocenteMateriaViewModel
     {
-        public ObservableCollection<DocenteInfo> docenteLista { get; }
-
-        public ObservableCollection<GruposInfo> grupoLista { get; }
+        public ObservableCollection<Docente_Grupo> docenteGruposLista { get; }
 
         public ObservableCollection<MateriasInfo> materiasLista { get; }
 
         public AddDocenteMateriaViewModel()
         {
-            docenteLista = new ObservableCollection<DocenteInfo>();
-            grupoLista = new ObservableCollection<GruposInfo>();
+            docenteGruposLista = new ObservableCollection<Docente_Grupo>();
             materiasLista = new ObservableCollection<MateriasInfo>();
 
             DocenteMateriaInfo = new DocenteMateria();
         }
 
-        public async Task<IEnumerable<DocenteInfo>> obtenerDoc()
-        {
-            var doclist = await App.DocenteService.GetAllDocenteAsync();
-            foreach (var docente in doclist)
+        public async Task<IEnumerable<Docente_Grupo>> obtenerDocGru(){
+            var dogruList = await App.Docente_GrupoService.GetAllDocenteGruposAsync();
+            foreach (var dogru in dogruList)
             {
-                docenteLista.Add(docente);
+                docenteGruposLista.Add(dogru);
             }
-            return docenteLista;
-        }
-
-        public async Task<IEnumerable<GruposInfo>> obtenerGru()
-        {
-            var grulist = await App.GrupoService.GetAllGruposAsync();
-            foreach (var grupo in grulist)
-            {
-                grupoLista.Add(grupo);
-            }
-            return grupoLista;
+            return docenteGruposLista;
         }
 
         public async Task<IEnumerable<MateriasInfo>> obtenerMat()

@@ -5,29 +5,31 @@
              xmlns:models="clr-namespace:AppEdu.Models"
              xmlns:local="clr-namespace:AppEdu.ViewModels"
              Title="DocentePage">
-    <ScrollView>
-    <VerticalStackLayout>
-            <Button x:Name="btnAddDocente" Text="Nuevo Docente" Clicked="btnAddDocente_ClickedAsync"/>
-            <RefreshView x:DataType="local:DocentePageViewModel"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" x:Name="btnAddDocente" Text="Nuevo Docente" Clicked="btnAddDocente_ClickedAsync"/>
+        <RefreshView Grid.Row="1" x:DataType="local:DocentePageViewModel"
                      Command="{Binding LoadDocenteCommand}"
                      IsRefreshing="{Binding IsBusy}">
 
-                <CollectionView ItemsSource="{Binding docenteLista}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:DocenteInfo}">
-                            <StackLayout Padding="5">
-                                <Label Text="{Binding NombreCompleto}"/>
-                                <Label Text="{Binding Edad}"/>
-                                <Label Text="{Binding Telefono}"/>
-                                <Label Text="{Binding Correo}"/>
-                                <Label Text="{Binding TipoDocente}"/>
-                                <Button Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DocentePageViewModel}},
+            <CollectionView ItemsSource="{Binding docenteLista}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type models:DocenteInfo}">
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding NombreCompleto}"/>
+                            <Label Text="{Binding Edad}"/>
+                            <Label Text="{Binding Telefono}"/>
+                            <Label Text="{Binding Correo}"/>
+                            <Label Text="{Binding TipoDocente}"/>
+                            <Button Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DocentePageViewModel}},
                                     Path=DocenteEditarCommand}" CommandParameter="{Binding .}"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </RefreshView>
-        </VerticalStackLayout>
-    </ScrollView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
 </ContentPage>

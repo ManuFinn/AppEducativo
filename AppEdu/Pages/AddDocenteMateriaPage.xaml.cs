@@ -16,12 +16,9 @@ public partial class AddDocenteMateriaPage : ContentPage
     private async void ComboMix()
     {
         vm = new AddDocenteMateriaViewModel();
-        await vm.obtenerDoc();
-        pckNombreDocente.ItemsSource = vm.docenteLista;
-        pckNombreDocente.ItemDisplayBinding = new Binding("NombreCompleto");
-        await vm.obtenerGru();
-        pckGrupo.ItemsSource = vm.grupoLista;
-        pckGrupo.ItemDisplayBinding = new Binding("Grupo");
+        await vm.obtenerDocGru();
+        pckDocenteGrupo.ItemsSource = vm.docenteGruposLista;
+        pckDocenteGrupo.ItemDisplayBinding = new Binding("NombreDocenteWGrupo");
         await vm.obtenerMat();
         pckAsignatura.ItemsSource = vm.materiasLista;
         pckAsignatura.ItemDisplayBinding = new Binding("nombre");
@@ -35,16 +32,15 @@ public partial class AddDocenteMateriaPage : ContentPage
     private async void btnAgregarDocenteMateria_ClickedAsync(object sender, EventArgs e)
     {
         vm = new AddDocenteMateriaViewModel();
-        DocenteInfo Docente = (DocenteInfo)pckNombreDocente.SelectedItem;
-        var idDocente = Docente.Id;
-        GruposInfo Grupo = (GruposInfo)pckGrupo.SelectedItem;
-        var idgRUPO = Grupo.Id;
+        Docente_Grupo DocenteGrupo = (Docente_Grupo)pckDocenteGrupo.SelectedItem;
+        var idDocente = DocenteGrupo.idDocente;
+        var idGrupo = DocenteGrupo.idGrupo;
         MateriasInfo Materia = (MateriasInfo)pckAsignatura.SelectedItem;
         var idMateria = Materia.id;
 
         Dictionary<string, int> datos = new Dictionary<string, int>();
         datos.Add("idDocente", idDocente);
-        datos.Add("idGrupo", idgRUPO);
+        datos.Add("idGrupo", idGrupo);
         datos.Add("idAsignatura", idMateria);
 
         vm.GuardarDocenteMateria(datos);

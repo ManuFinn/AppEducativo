@@ -9,22 +9,21 @@ public partial class DocenteMateriaPage : ContentPage
 	public DocenteMateriaPage()
 	{
 		InitializeComponent();
+        vm = new DocenteMateriaPageViewModel();
         this.BindingContext = vm = new DocenteMateriaPageViewModel();
-	}
+        cvDocenteMateria.ItemsSource = vm.docenteMateriaLista;
+
+    }
 
     protected override void OnAppearing()
     {
-        base.OnAppearing();
+        //base.OnAppearing();
         vm.OnAppearing();
     }
 
     private async void btnAddDocenteMateria_ClickedAsync(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new AddDocenteMateriaPage());
+        await Navigation.PushAsync(new AddDocenteMateriaPage());
     }
 
-    private async void tbiBack_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PopModalAsync();
-    }
 }

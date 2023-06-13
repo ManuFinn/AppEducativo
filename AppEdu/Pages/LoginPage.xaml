@@ -2,11 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppEdu.Pages.LoginPage"
-             Title="Bienvenido">
+             Title="Inicio de sesión">
     <VerticalStackLayout>
         <Entry x:Name="etyUser" Placeholder="Usuario" Text="asdas"/>
         <Entry x:Name="etyPass" IsPassword="True" Placeholder="Contraseña" Text="123"/>
         <Button x:Name="btnLogin" Text="Iniciar Sesión" Clicked="btnLogin_Clicked"/>
-        <Label Text="Texto generico"/>
     </VerticalStackLayout>
 </ContentPage>

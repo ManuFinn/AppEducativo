@@ -14,7 +14,7 @@ namespace AppEdu.ViewModels
         public ObservableCollection<DocenteInfo> docenteLista { get; }
 
         public DocentePageViewModel(INavigation navi){
-                docenteLista = new ObservableCollection<DocenteInfo>();
+            docenteLista = new ObservableCollection<DocenteInfo>();
             Navigation = navi;
         }
 

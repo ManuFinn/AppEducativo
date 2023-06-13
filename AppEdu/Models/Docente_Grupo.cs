@@ -22,5 +22,7 @@ namespace AppEdu.Models
         public string NombreCompleto => $"{nombreProfe} {primerApellido} {segundoApellido}";
 
         public string Grupo => $"{grado}.{seccion}";
+
+        public string NombreDocenteWGrupo => $"{nombreProfe} {primerApellido} {segundoApellido} ({grado}.{seccion})";
     }
 }

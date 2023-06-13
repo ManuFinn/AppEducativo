@@ -6,8 +6,7 @@
              Title="AddDocenteMateriaPage">
     <VerticalStackLayout>
         <StackLayout Orientation="Horizontal" Spacing="10">
-            <Picker x:Name="pckNombreDocente"/>
-            <Picker x:Name="pckGrupo"/>
+            <Picker x:Name="pckDocenteGrupo"/>
             <Picker x:Name="pckAsignatura"/>
         </StackLayout>
         <Button x:Name="btnAgregarDocenteMateria" Text="Agregar" Clicked="btnAgregarDocenteMateria_ClickedAsync"/>

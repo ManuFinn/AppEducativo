@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppEdu.Pages.HomePage">
+             x:Class="AppEdu.Pages.HomePage"
+             Title="Bienvenido director">
     <VerticalStackLayout>
         <Label Text="Vista Home"/>
         <Button x:Name="btnDocentes" Text="Docentes" Clicked="btnDocentes_ClickedAsync"/>
         <Button x:Name="btnGrupos" Text="Grupos" Clicked="btnGrupos_ClickedAsync"/>
-        <Button x:Name="btnAsignaturas" Text="Asignaturas" Clicked="btnAsignaturasAsync_Clicked"/>
+        <Button x:Name="btnAsignaturas" Text="Asignaturas" Clicked="btnAsignaturasAsync_ClickedAsync"/>
+        <Button x:Name="btnDirector" Text="Modificar datos de cuenta" Clicked="btnDirector_ClickedAsync"/>
     </VerticalStackLayout>
 
 </ContentPage>

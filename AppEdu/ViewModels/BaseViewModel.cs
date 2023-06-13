@@ -10,8 +10,11 @@ namespace AppEdu.Services
     public partial class BaseViewModel : ObservableObject
     {
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsNotBysu))]
         public bool _isBusy;
         [ObservableProperty]
         public string _title;
+
+        public bool IsNotBysu => !_isBusy;
     }
 }

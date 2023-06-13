@@ -11,16 +11,21 @@ public partial class HomePage : ContentPage
 
     private async void btnDocentes_ClickedAsync(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new DocentePage());
+        await Navigation.PushAsync(new DocentePage());
     }
 
     private async void btnGrupos_ClickedAsync(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new Docente_GrupoPage());
+        await Navigation.PushAsync(new Docente_GrupoPage());
     }
 
-    private async void btnAsignaturasAsync_Clicked(object sender, EventArgs e)
+    private async void btnAsignaturasAsync_ClickedAsync(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new DocenteMateriaPage());
+        await Navigation.PushAsync(new DocenteMateriaPage());
+    }
+
+    private async void btnDirector_ClickedAsync(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EditDirectorPage());
     }
 }
