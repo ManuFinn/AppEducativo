@@ -22,15 +22,9 @@ public partial class AddDocentePage : ContentPage
         }
     }
 
-    private async void btnAgregarDocente_Clicked(object sender, EventArgs e)
-    {
-		//AddDocentePageViewModel vm = new AddDocentePageViewModel();
-		//vm.GuardarDocente();
-		await Navigation.PopModalAsync();
-    }
-
     private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
         await Navigation.PopModalAsync();
     }
+
 }

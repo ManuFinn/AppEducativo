@@ -11,7 +11,7 @@
         <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.contraseña, Mode=TwoWay}"/>
         <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.telefono, Mode=TwoWay}"/>
         <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.direccion, Mode=TwoWay}"/>
-        <Button x:Name="btnEditarDirector" Text="Agregar" Command="{Binding GuardarDirectorCommand}" Clicked="btnEditarDirector_ClickedAsync"/>
+        <Button x:Name="btnEditarDirector" Text="Agregar" Command="{Binding GuardarDirectorCommand}"/>
         <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_ClickedAsync"/>
     </VerticalStackLayout>
 </ContentPage>

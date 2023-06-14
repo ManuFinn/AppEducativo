@@ -12,6 +12,8 @@ namespace AppEdu.ViewModels.Docente_GrupoVM
 {
     public partial class AddDocente_GrupoViewModel : BaseDocente_GrupoViewModel
     {
+        public bool Worked;
+
         public ObservableCollection<DocenteInfo> docenteLista { get; }
 
         public ObservableCollection<GruposInfo> grupoLista { get; }
@@ -53,7 +55,9 @@ namespace AppEdu.ViewModels.Docente_GrupoVM
             {
                 info.idGrupo = datos["idGrupo"];
             }
+
             await App.Docente_GrupoService.AddUpdateDocenteAsync(info);
+
         }
     }
 }

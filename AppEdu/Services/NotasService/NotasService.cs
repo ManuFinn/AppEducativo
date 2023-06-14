@@ -1,11 +1,7 @@
 ﻿using AppEdu.Models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AppEdu.Services.NotasService
 {
@@ -42,6 +38,12 @@ namespace AppEdu.Services.NotasService
 
                 if (respMess.IsSuccessStatusCode)
                 {
+                    await App.Current.MainPage.Navigation.PopModalAsync();
+                    return await Task.FromResult(true);
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
                     return await Task.FromResult(true);
                 }
             }
@@ -53,10 +55,15 @@ namespace AppEdu.Services.NotasService
 
                 if (respMess.IsSuccessStatusCode)
                 {
+                    await App.Current.MainPage.Navigation.PopModalAsync();
                     return await Task.FromResult(true);
                 }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
+                    return await Task.FromResult(false);
+                }
             }
-            return await Task.FromResult(true);
         }
 
         public async Task<bool> DeleteNotasAsync(int idNotas)
@@ -71,10 +78,11 @@ namespace AppEdu.Services.NotasService
             }
             else
             {
+                await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
                 return await Task.FromResult(false);
             }
         }
 
-        
+
     }
 }

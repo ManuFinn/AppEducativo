@@ -32,11 +32,18 @@ public partial class AddDocenteMateriaPage : ContentPage
     private async void btnAgregarDocenteMateria_ClickedAsync(object sender, EventArgs e)
     {
         vm = new AddDocenteMateriaViewModel();
+
+
         Docente_Grupo DocenteGrupo = (Docente_Grupo)pckDocenteGrupo.SelectedItem;
-        var idDocente = DocenteGrupo.idDocente;
-        var idGrupo = DocenteGrupo.idGrupo;
+        var idDocente = 0;
+        if(DocenteGrupo != null) { idDocente = DocenteGrupo.idDocente; }
+        else { }
+        var idGrupo = 0;
+        if(DocenteGrupo != null) { idGrupo = DocenteGrupo.idGrupo; }
+        else { }
         MateriasInfo Materia = (MateriasInfo)pckAsignatura.SelectedItem;
-        var idMateria = Materia.id;
+        var idMateria = 0;
+        if(Materia != null){ idMateria = Materia.id; }
 
         Dictionary<string, int> datos = new Dictionary<string, int>();
         datos.Add("idDocente", idDocente);
@@ -44,8 +51,6 @@ public partial class AddDocenteMateriaPage : ContentPage
         datos.Add("idAsignatura", idMateria);
 
         vm.GuardarDocenteMateria(datos);
-
-        await Navigation.PopModalAsync();
     }
 
 }

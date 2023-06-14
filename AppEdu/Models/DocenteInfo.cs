@@ -16,7 +16,6 @@ namespace AppEdu.Models
         public string Telefono { get; set; }
         public int Edad { get; set; }
         public int TipoDocente { get; set; }
-        public int IdUsuario { get; set; }
         public string Usuario1 { get; set; }
         public string Contraseña { get; set; }
 

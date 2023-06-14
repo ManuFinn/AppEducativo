@@ -7,10 +7,12 @@ public partial class AddUpdateNotaPage : ContentPage
 {
 	public NotasInfo NotasInfo { get; set; }
 
-	public AddUpdateNotaPage()
+	AddUpdateNotasPageViewModel vm;
+
+    public AddUpdateNotaPage()
 	{
 		InitializeComponent();
-		this.BindingContext = new AddUpdateNotasPageViewModel();
+		this.BindingContext = vm = new AddUpdateNotasPageViewModel();
 	}
 
 	public AddUpdateNotaPage(NotasInfo nota)
@@ -23,13 +25,9 @@ public partial class AddUpdateNotaPage : ContentPage
 		}
     }
 
-    private async void btnAddUpdateNota_ClickedAsync(object sender, EventArgs e)
-    {
-        await Navigation.PopModalAsync();
-    }
-
     private async void btnCancelar_ClickedAsync(object sender, EventArgs e)
     {
         await Navigation.PopModalAsync();
     }
+
 }

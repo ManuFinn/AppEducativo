@@ -48,21 +48,23 @@ public partial class AddDocente_GrupoPage : ContentPage
         await Navigation.PopModalAsync();
     }
 
-    private async void btnAgregarDocenteGrupo_ClickedAsync(object sender, EventArgs e)
+    private void btnAgregarDocenteGrupo_ClickedAsync(object sender, EventArgs e)
     {
         vm = new AddDocente_GrupoViewModel();
 
         DocenteInfo Docente = (DocenteInfo)pckNombreDocente.SelectedItem;
-        var idDocente = Docente.Id;
+        var idDocente = 0;
+        if (Docente != null) { idDocente = Docente.Id; }
+        else {  }
         GruposInfo Grupo = (GruposInfo)pckGrupo.SelectedItem;
-        var idgRUPO = Grupo.Id;
+        var idgRUPO = 0;
+        if (Grupo != null) { idgRUPO = Grupo.Id; }
+        else { }
 
         Dictionary<string, int> datos = new Dictionary<string, int>();
         datos.Add("idDocente", idDocente);
         datos.Add("idGrupo", idgRUPO);
 
         vm.GuardarDocenteGrupo(datos);
-
-        await Navigation.PopModalAsync();
     }
 }

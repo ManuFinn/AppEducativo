@@ -23,7 +23,6 @@ public partial class LoginPage : ContentPage
 		object usinfo = await _loginrepository.Login(userName, password);
 		if(usinfo != null) {
             await Navigation.PushAsync(new HomePage());
-			//await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
 		else
 		{

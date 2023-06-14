@@ -5,28 +5,61 @@
              xmlns:models="clr-namespace:AppEdu.Models"
              xmlns:local="clr-namespace:AppEdu.ViewModels"
              Title="DocentePage">
-    <Grid>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnAddDocente" Text="Agregar Docente" Clicked="btnAddDocente_ClickedAsync" IconImageSource="plus.png">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <Grid Margin="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" x:Name="btnAddDocente" Text="Nuevo Docente" Clicked="btnAddDocente_ClickedAsync"/>
-        <RefreshView Grid.Row="1" x:DataType="local:DocentePageViewModel"
+        <RefreshView Grid.Row="0" x:DataType="local:DocentePageViewModel"
                      Command="{Binding LoadDocenteCommand}"
                      IsRefreshing="{Binding IsBusy}">
 
             <CollectionView ItemsSource="{Binding docenteLista}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="{x:Type models:DocenteInfo}">
-                        <StackLayout Padding="5">
-                            <Label Text="{Binding NombreCompleto}"/>
-                            <Label Text="{Binding Edad}"/>
-                            <Label Text="{Binding Telefono}"/>
-                            <Label Text="{Binding Correo}"/>
-                            <Label Text="{Binding TipoDocente}"/>
-                            <Button Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DocentePageViewModel}},
+                        <Border HeightRequest="140" Margin="0,0,0,10"  Padding="10" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <Label FontAttributes="Bold" FontSize="Subtitle" Text="Nombre"/>
+                                <Label Text="{Binding NombreCompleto}"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                                <Label FontAttributes="Bold" FontSize="Subtitle" Text="Correo"/>
+                                <Label Text="{Binding Correo}"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+                                <Label FontAttributes="Bold" FontSize="Subtitle" Text="Telefono"/>
+                                <Label Text="{Binding Telefono}"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                                <Label FontAttributes="Bold" FontSize="Subtitle" Text="Edad"/>
+                                <Label Text="{Binding Edad}"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                                <Label FontAttributes="Bold" FontSize="Subtitle" Text="Tipo"/>
+                                <Label Text="{Binding TipoDocente}"/>
+                            </StackLayout>
+                            <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DocentePageViewModel}},
                                     Path=DocenteEditarCommand}" CommandParameter="{Binding .}"/>
-                        </StackLayout>
+                        </Grid>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

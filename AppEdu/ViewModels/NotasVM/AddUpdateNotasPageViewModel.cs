@@ -10,6 +10,8 @@ namespace AppEdu.ViewModels.NotasVM
 {
     public partial class AddUpdateNotasPageViewModel : BaseNotasViewModel
     {
+        public bool Worked;
+
         public AddUpdateNotasPageViewModel()
         {
             NotasInfo = new NotasInfo();

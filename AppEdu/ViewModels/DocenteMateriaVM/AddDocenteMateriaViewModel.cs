@@ -10,6 +10,8 @@ namespace AppEdu.ViewModels.DocenteMateriaVM
 {
     public partial class AddDocenteMateriaViewModel : BaseDocenteMateriaViewModel
     {
+        public bool Worked;
+
         public ObservableCollection<Docente_Grupo> docenteGruposLista { get; }
 
         public ObservableCollection<MateriasInfo> materiasLista { get; }
@@ -56,6 +58,7 @@ namespace AppEdu.ViewModels.DocenteMateriaVM
             {
                 info.idAsignatura = datos["idAsignatura"];
             }
+
             await App.DocenteMateriaService.AddUpdateDocenteMateriaAsync(info);
         }
     }

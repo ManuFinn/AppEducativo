@@ -10,6 +10,8 @@ namespace AppEdu.ViewModels
 {
     public partial class AddDocentePageViewModel : BaseDocenteViewModel
     {
+        public bool Worked;
+
         public AddDocentePageViewModel() {
             DocenteInfo = new DocenteInfo();
         }
@@ -19,7 +21,6 @@ namespace AppEdu.ViewModels
         {
             var docente = DocenteInfo;
             await App.DocenteService.AddUpdateDocenteAsync(docente);
-
         }
     }
 }

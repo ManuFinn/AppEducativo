@@ -1,11 +1,7 @@
 ﻿using AppEdu.Models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AppEdu.Services.DocenteMateriaService
 {
@@ -30,6 +26,7 @@ namespace AppEdu.Services.DocenteMateriaService
 
         public async Task<bool> AddUpdateDocenteMateriaAsync(DocenteMateria doceMate)
         {
+
             string json = JsonConvert.SerializeObject(doceMate);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
@@ -42,10 +39,20 @@ namespace AppEdu.Services.DocenteMateriaService
 
                 if (respMess.IsSuccessStatusCode)
                 {
+                    await App.Current.MainPage.Navigation.PopModalAsync();
                     return await Task.FromResult(true);
                 }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
+                    return await Task.FromResult(false);
+                }
             }
-            return await Task.FromResult(true);
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
+                return await Task.FromResult(false);
+            }
         }
     }
 }

@@ -26,8 +26,4 @@ public partial class UpdateDirectorPage : ContentPage
         await Navigation.PopModalAsync();
     }
 
-    private async void btnEditarDirector_ClickedAsync(object sender, EventArgs e)
-    {
-        await Navigation.PopModalAsync();
-    }
 }

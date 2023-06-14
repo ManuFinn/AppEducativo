@@ -45,10 +45,20 @@ namespace AppEdu.Services.DirectorService
 
                 if (respMess.IsSuccessStatusCode)
                 {
+                    await App.Current.MainPage.Navigation.PopModalAsync();
                     return await Task.FromResult(true);
                 }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
+                    return await Task.FromResult(false);
+                }
             }
-            return await Task.FromResult(true);
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
+                return await Task.FromResult(false);
+            }
         }
     }
 }
