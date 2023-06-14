@@ -4,22 +4,30 @@
              x:Class="AppEdu.Pages.DirectorPage"
              xmlns:models="clr-namespace:AppEdu.Models"
              xmlns:local="clr-namespace:AppEdu.ViewModels.DirectorVM"
-             x:DataType="local:DirectorPageViewModel"
              Title="Datos del director">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" x:Name="btnUpdateDirector" Text="Editar datos"/>
         <RefreshView Grid.Row="1" x:DataType="local:DirectorPageViewModel"
                      Command="{Binding LoadDirectorCommand}"
                      IsRefreshing="{Binding IsBusy}">
 
-            <VerticalStackLayout>
-                <Label Text="{Binding DirectorInfo.nombre}"/>
-                <Label Text="{Binding director.nombre}"/>
-            </VerticalStackLayout>
+            <CollectionView ItemsSource="{Binding director}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type models:DirectorInfo}">
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding nombre}"/>
+                            <Label Text="{Binding usuario}"/>
+                            <Label Text="{Binding direccion}"/>
+                            <Label Text="{Binding telefono}"/>
+                            <Button Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DirectorPageViewModel}},
+                                    Path=DocenteEditarCommand}" CommandParameter="{Binding .}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </RefreshView>
     </Grid>
 </ContentPage>

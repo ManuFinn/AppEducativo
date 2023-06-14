@@ -9,7 +9,7 @@ namespace AppEdu.Services.DirectorService
 {
     public interface IDirectorRepository
     {
-        Task<DirectorInfo> GetDirectorAsync();
+        Task<IEnumerable<DirectorInfo>> GetDirectorAsync();
 
         Task<bool> UpdateDirectorAsync(DirectorInfo direIn);
     }

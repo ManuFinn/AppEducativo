@@ -6,13 +6,14 @@ using AppEdu.Services.DocenteMateriaService;
 using AppEdu.Services.DocenteService;
 using AppEdu.Services.GrupoService;
 using AppEdu.Services.MateriaService;
+using AppEdu.Services.NotasService;
 
 namespace AppEdu;
 
 public partial class App : Application
 {
 
-    public static DirectorInfo directorInfo;
+    public static DirectorInfo DirectorInfo;
     public static DirectorService _directorService;
 
 	public static DocenteInfo DocenteInfo;
@@ -29,6 +30,9 @@ public partial class App : Application
 
     public static DocenteMateria DocenteMateria;
     public static DocenteMateriaService _docenteMateriaService;
+
+    public static NotasInfo NotasInfo;
+    public static NotasService _notasService;
 
 
     public static DirectorService DirectorService
@@ -100,6 +104,18 @@ public partial class App : Application
                 _docenteMateriaService = new DocenteMateriaService();
             }
             return _docenteMateriaService;
+        }
+    }
+
+    public static NotasService NotasService
+    {
+        get
+        {
+            if(_notasService == null)
+            {
+                _notasService = new NotasService();
+            }
+            return _notasService;
         }
     }
 

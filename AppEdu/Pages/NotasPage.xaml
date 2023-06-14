@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppEdu.Pages.NotasPage"
+             xmlns:models="clr-namespace:AppEdu.Models"
+             xmlns:local="clr-namespace:AppEdu.ViewModels.NotasVM"
+             Title="Notas">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" x:Name="btnAddNota" Text="Nueva Nota" Clicked="btnAddNota_ClickedAsync"/>
+        <RefreshView Grid.Row="1" x:DataType="local:NotasPageViewModel"
+                     Command="{Binding LoadNotasCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+
+            <CollectionView ItemsSource="{Binding notasLista}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type models:NotasInfo}">
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding titulo}"/>
+                            <Label Text="{Binding descripcion}"/>
+                            <Button Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:NotasPageViewModel}},
+                                    Path=notasEditarCommand}" CommandParameter="{Binding .}"/>
+                            <Button Text="Eliminar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:NotasPageViewModel}},
+                                    Path=notasDeleteCommand}" CommandParameter="{Binding .}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

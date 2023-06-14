@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppEdu.Pages.UpdateDirectorPage"
+             xmlns:local="clr-namespace:AppEdu.ViewModels.DirectorVM"
+             Title="UpdateDirectorPage">
+    <VerticalStackLayout>
+        <Entry Placeholder="Id" Text="{Binding DocenteInfo.Id, Mode=TwoWay}" IsEnabled="False" IsVisible="false"/>
+        <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.nombre, Mode=TwoWay}"/>
+        <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.usuario, Mode=TwoWay}"/>
+        <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.contraseña, Mode=TwoWay}"/>
+        <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.telefono, Mode=TwoWay}"/>
+        <Entry Placeholder="Nombre" Text="{Binding DirectorInfo.direccion, Mode=TwoWay}"/>
+        <Button x:Name="btnEditarDirector" Text="Agregar" Command="{Binding GuardarDirectorCommand}" Clicked="btnEditarDirector_ClickedAsync"/>
+        <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_ClickedAsync"/>
+    </VerticalStackLayout>
+</ContentPage>

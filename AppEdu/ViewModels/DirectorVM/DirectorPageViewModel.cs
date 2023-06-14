@@ -11,10 +11,10 @@ namespace AppEdu.ViewModels.DirectorVM
 {
     public partial class DirectorPageViewModel : BaseDirectorViewModel
     {
-        public DirectorInfo director { get; }
+        public ObservableCollection<DirectorInfo> director { get; }
 
         public DirectorPageViewModel(INavigation navi) {
-            director = new DirectorInfo();
+            director = new ObservableCollection<DirectorInfo>();
             Navigation = navi;
         }
 
@@ -29,14 +29,11 @@ namespace AppEdu.ViewModels.DirectorVM
             IsBusy = true;
             try
             {
+                director.Clear();
                 var direActual = await App.DirectorService.GetDirectorAsync();
-                if (direActual != null)
+                foreach (var dire in direActual)
                 {
-                    director.usuario = direActual.usuario;
-                    director.nombre = direActual.nombre;
-                    director.contraseña = direActual.contraseña;
-                    director.telefono = direActual.telefono;
-                    director.direccion = direActual.direccion;
+                    director.Add(dire);
                 }
             }
             catch (Exception)
@@ -51,7 +48,7 @@ namespace AppEdu.ViewModels.DirectorVM
         {
             if (direIn == null)
                 return;
-            //await Navigation.PushModalAsync(new EditDirectorPage(direIn));
+            await Navigation.PushModalAsync(new UpdateDirectorPage(direIn));
         }
     }
 }

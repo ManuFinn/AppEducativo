@@ -13,9 +13,9 @@ namespace AppEdu.Services.DirectorService
     {
         public static readonly string baseUrl = "https://dashboarddirector.sistemas19.com/api";
 
-        public async Task<DirectorInfo> GetDirectorAsync()
+        public async Task<IEnumerable<DirectorInfo>> GetDirectorAsync()
         {
-            var dire = new DirectorInfo();
+            var dire = new List<DirectorInfo>();
             HttpClient Client = new HttpClient();
             string url = baseUrl + "/Director/DatosDirector";
             Client.BaseAddress = new Uri(url);
@@ -23,8 +23,10 @@ namespace AppEdu.Services.DirectorService
 
             if (respMess.IsSuccessStatusCode)
             {
-                var content = await respMess.Content.ReadAsStringAsync();
-                dire = JsonConvert.DeserializeObject<DirectorInfo>(content);
+                var a = await respMess.Content.ReadAsStringAsync();
+                var director = JsonConvert.DeserializeObject<DirectorInfo>(a);
+                dire.Add(director);
+
             }
             return await Task.FromResult(dire);
         }
@@ -39,7 +41,7 @@ namespace AppEdu.Services.DirectorService
             {
                 string url = baseUrl + "/Director/EditarMiPerfil";
                 client.BaseAddress = new Uri(url);
-                HttpResponseMessage respMess = await client.PostAsync("", content);
+                HttpResponseMessage respMess = await client.PutAsync("", content);
 
                 if (respMess.IsSuccessStatusCode)
                 {

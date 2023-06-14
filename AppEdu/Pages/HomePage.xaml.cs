@@ -28,4 +28,9 @@ public partial class HomePage : ContentPage
     {
         await Navigation.PushAsync(new DirectorPage());
     }
+
+    private async void btnNotas_ClickedAsync(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new NotasPage());
+    }
 }

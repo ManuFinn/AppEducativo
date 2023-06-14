@@ -9,6 +9,7 @@
         <Button x:Name="btnGrupos" Text="Grupos" Clicked="btnGrupos_ClickedAsync"/>
         <Button x:Name="btnAsignaturas" Text="Asignaturas" Clicked="btnAsignaturasAsync_ClickedAsync"/>
         <Button x:Name="btnDirector" Text="Modificar datos de cuenta" Clicked="btnDirector_ClickedAsync"/>
+        <Button x:Name="btnNotas" Text="Notas" Clicked="btnNotas_ClickedAsync"/>
     </VerticalStackLayout>
 
 </ContentPage>
