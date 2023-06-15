@@ -5,9 +5,9 @@
              Title="Inicio de sesión">
     <VerticalStackLayout Padding="15,0">
         <Label Margin="0,15,0,0" Text="Usuario"/>
-        <Entry x:Name="etyUser" Placeholder="Usuario" Text="asdas"/>
+        <Entry x:Name="etyUser" Placeholder="Usuario"/>
         <Label Margin="0,15,0,0" Text="Contraseña"/>
-        <Entry x:Name="etyPass" IsPassword="True" Placeholder="Contraseña" Text="123"/>
+        <Entry x:Name="etyPass" IsPassword="True" Placeholder="Contraseña"/>
         <Button x:Name="btnLogin" WidthRequest="200" Margin="0,10,0,0" Text="Iniciar Sesión" Clicked="btnLogin_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>
