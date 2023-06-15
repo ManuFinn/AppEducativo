@@ -50,5 +50,15 @@ namespace AppEdu.ViewModels
                 return;
             await Navigation.PushModalAsync(new AddDocentePage(doIn));
         }
+
+        [RelayCommand]
+        private async void DocenteDelete(DocenteInfo doIn)
+        {
+            if (doIn == null)
+                return;
+            await App.DocenteService.DeleteDocenteAsync(doIn.Id);
+            await LoadDocente();
+            OnAppearing();
+        }
     }
 }

@@ -67,5 +67,21 @@ namespace AppEdu.Services.DocenteService
             }
         }
 
+        public async Task<bool> DeleteDocenteAsync(int idDocente)
+        {
+            HttpClient client = new HttpClient();
+            string url = baseUrl + "/Director/EliminarDocentes/" + idDocente;
+            client.BaseAddress = new Uri(url);
+            HttpResponseMessage respMess = await client.DeleteAsync("");
+            if (respMess.IsSuccessStatusCode)
+            {
+                return await Task.FromResult(true);
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Advertencia", "Algo salio mal", "Ok");
+                return await Task.FromResult(false);
+            }
+        }
     }
 }

@@ -56,8 +56,10 @@
                                 <Label FontAttributes="Bold" FontSize="Subtitle" Text="Tipo"/>
                                 <Label Text="{Binding TipoDocente}"/>
                             </StackLayout>
-                            <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DocentePageViewModel}},
+                            <Button Grid.Row="0" Grid.Column="2"  Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DocentePageViewModel}},
                                     Path=DocenteEditarCommand}" CommandParameter="{Binding .}"/>
+                                <Button Grid.Row="2" Grid.Column="2" Text="Eliminar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:DocentePageViewModel}},
+                                    Path=DocenteDeleteCommand}" CommandParameter="{Binding .}"/>
                         </Grid>
                         </Border>
                     </DataTemplate>

@@ -38,4 +38,9 @@ public partial class HomePage : ContentPage
     {
         await Navigation.PushAsync(new CalendarioPage());
     }
+
+    private async void btnLogOut_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

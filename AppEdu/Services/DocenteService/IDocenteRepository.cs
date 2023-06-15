@@ -13,5 +13,7 @@ namespace AppEdu.Services.DocenteService
 
         Task<bool> AddUpdateDocenteAsync(DocenteInfo doceIn);
 
+        Task<bool> DeleteDocenteAsync(int idDocente);
+
     }
 }

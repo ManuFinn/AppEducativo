@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppEdu.Pages.HomePage"
              Title="Bienvenido director">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnLogOut" Text="Cerrar sesión" Clicked="btnLogOut_Clicked" IconImageSource="logout.png"/>
+    </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
