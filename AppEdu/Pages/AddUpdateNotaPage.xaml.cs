@@ -13,15 +13,26 @@ public partial class AddUpdateNotaPage : ContentPage
 	{
 		InitializeComponent();
 		this.BindingContext = vm = new AddUpdateNotasPageViewModel();
+		Combo();
 	}
+
+	private async void Combo()
+	{
+		vm = new AddUpdateNotasPageViewModel();
+		await vm.obtenerAlu();
+		pckAlumno.ItemsSource = vm.alumnoLista;
+		pckAlumno.ItemDisplayBinding = new Binding("AlumnoWGrupo");
+
+    }
 
 	public AddUpdateNotaPage(NotasInfo nota)
     {
         InitializeComponent();
 		this.BindingContext = new AddUpdateNotasPageViewModel();
-		if(nota != null)
+        Combo();
+        if (nota != null)
 		{
-			((AddUpdateNotasPageViewModel)BindingContext).NotasInfo = nota;
+            ((AddUpdateNotasPageViewModel)BindingContext).NotasInfo = nota;
 		}
     }
 
@@ -30,4 +41,20 @@ public partial class AddUpdateNotaPage : ContentPage
         await Navigation.PopModalAsync();
     }
 
+    private async void btnAddUpdateNota_Clicked(object sender, EventArgs e)
+    {
+        vm = new AddUpdateNotasPageViewModel();
+		AlumnosInfo Alumno = (AlumnosInfo)pckAlumno.SelectedItem;
+		var idAlumno = 0;
+		if(Alumno != null) { idAlumno = Alumno.id; }
+		else { }
+
+        Dictionary<string, string> datos = new Dictionary<string, string>();
+        datos.Add("idAlumno", idAlumno.ToString());
+        datos.Add("id", etyId.Text);
+        datos.Add("titulo", etyTit.Text);
+        datos.Add("descripcion", etyDesc.Text);
+
+		vm.GuardarNota(datos);
+    }
 }

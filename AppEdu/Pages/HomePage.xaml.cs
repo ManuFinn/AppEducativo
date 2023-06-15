@@ -33,4 +33,9 @@ public partial class HomePage : ContentPage
     {
         await Navigation.PushAsync(new NotasPage());
     }
+
+    private async void btnCalendario_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CalendarioPage());
+    }
 }

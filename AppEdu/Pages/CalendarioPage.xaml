@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppEdu.Pages.NotasPage"
+             x:Class="AppEdu.Pages.CalendarioPage"
              xmlns:models="clr-namespace:AppEdu.Models"
-             xmlns:local="clr-namespace:AppEdu.ViewModels.NotasVM"
-             Title="Notas">
+             xmlns:local="clr-namespace:AppEdu.ViewModels.CalendarioVM"
+             Title="Calendario">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="btnAddNota" Text="Nueva Nota" Clicked="btnAddNota_ClickedAsync" IconImageSource="plus.png">
+        <ToolbarItem x:Name="btnAddCalendario" Text="Nuevo evento" Clicked="btnAddCalendario_Clicked" IconImageSource="plus.png">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <RefreshView Grid.Row="0" x:DataType="local:NotasPageViewModel"
-                     Command="{Binding LoadNotasCommand}"
+        <RefreshView Grid.Row="0" x:DataType="local:CalendarioPageVM"
+                     Command="{Binding LoadCalendarioCommand}"
                      IsRefreshing="{Binding IsBusy}">
 
-            <CollectionView ItemsSource="{Binding notasLista}">
+            <CollectionView ItemsSource="{Binding calendarioLista}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type models:NotasInfo}">
-                        <Border HeightRequest="140" Margin="0,0,0,10"  Padding="10" >
+                    <DataTemplate x:DataType="{x:Type models:CalendarioInfo}">
+                        <Border HeightRequest="130" Margin="0,0,0,10"  Padding="10" >
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10"/>
                             </Border.StrokeShape>
-                        
-                        <Grid>
+
+                            <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
@@ -39,15 +40,19 @@
                                     <Label Text="{Binding titulo}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-                                    <Label FontAttributes="Bold" FontSize="Subtitle" Text="Alumno"/>
-                                    <Label Text="{Binding AlumnoWGrupo}"/>
+                                    <Label FontAttributes="Bold" FontSize="Subtitle" Text="Fecha"/>
+                                    <Label Text="{Binding fecha}"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+                                    <Label FontAttributes="Bold" FontSize="Subtitle" Text="Descripcion"/>
+                                    <Label Text="{Binding descripcion}"/>
                                 </StackLayout>
 
-                                <Button Grid.Row="0" Grid.Column="1" Margin="10" Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:NotasPageViewModel}},
-                                    Path=notasEditarCommand}" CommandParameter="{Binding .}"/>
-                                <Button Grid.Row="1" Grid.Column="1" Margin="10" Text="Eliminar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:NotasPageViewModel}},
-                                    Path=notasDeleteCommand}" CommandParameter="{Binding .}"/>
-                        </Grid>
+                                <Button Grid.Row="0" Grid.Column="1"  Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalendarioPageVM}},
+                                    Path=caleEditarCommand}" CommandParameter="{Binding .}"/>
+                                <Button Grid.Row="2" Grid.Column="1"  Text="Eliminar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalendarioPageVM}},
+                                    Path=caleDeleteCommand}" CommandParameter="{Binding .}"/>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

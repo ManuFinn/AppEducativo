@@ -1,5 +1,7 @@
 ﻿using AppEdu.Models;
 using AppEdu.Pages;
+using AppEdu.Services.AlumnosService;
+using AppEdu.Services.CalendarioService;
 using AppEdu.Services.DirectorService;
 using AppEdu.Services.Docente_GrupoService;
 using AppEdu.Services.DocenteMateriaService;
@@ -33,6 +35,12 @@ public partial class App : Application
 
     public static NotasInfo NotasInfo;
     public static NotasService _notasService;
+
+    public static AlumnosInfo AlumnosInfo;
+    public static AlumnoService _alumnoService;
+
+    public static CalendarioInfo CalendarioInfo;
+    public static CalendarioService _CalendarioService;
 
 
     public static DirectorService DirectorService
@@ -116,6 +124,30 @@ public partial class App : Application
                 _notasService = new NotasService();
             }
             return _notasService;
+        }
+    }
+
+    public static AlumnoService AlumnoService
+    {
+        get
+        {
+            if (_alumnoService == null)
+            {
+                _alumnoService = new AlumnoService();
+            }
+            return _alumnoService;
+        }
+    }
+
+    public static CalendarioService CalendarioService
+    {
+        get
+        {
+            if (_CalendarioService == null)
+            {
+                _CalendarioService = new CalendarioService();
+            }
+            return _CalendarioService;
         }
     }
 
